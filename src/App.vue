@@ -1,15 +1,18 @@
 <script lang="ts">
 import Sidebar from '@/components/Sidebar.vue'
+import Editor from '@/components/Editor.vue'
   export default{
     name: 'App',
     components: {
-      Sidebar
+      Sidebar,
+      Editor
     }
   }
 </script>
 
 <template>
    <sidebar></sidebar>
+   <editor></editor>
 </template>
 
 <style>

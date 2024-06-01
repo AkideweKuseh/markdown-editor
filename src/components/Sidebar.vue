@@ -48,7 +48,7 @@
 
 <style>
     .sidebar {
-        width: 250px;
+        width: 233px;
         background: var(--sidebarColor);
         color: white;
         position: fixed;
