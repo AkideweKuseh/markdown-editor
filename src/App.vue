@@ -6,6 +6,16 @@ import Editor from '@/components/Editor.vue'
     components: {
       Sidebar,
       Editor
+    },
+    data(){
+      return{
+        menuActive: false,
+      }
+    },
+    methods: {
+      slideSidebar(){
+        
+      }
     }
   }
 </script>

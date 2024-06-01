@@ -2,10 +2,10 @@
     <div class="main-content" id="main-content">
         <div class="header" id="header">
             <div class="header-left">
-                <button class="menu-btn" id="menu-btn">
+                <button class="menu-btn" @click="slideAction">
                     <img src="../assets/icon-menu.svg">
                 </button>
-                <button class="close-btn" id="close-btn">
+                <button class="close-btn">
                     <img src="../assets/icon-close.svg">
                 </button>
                 <span class="logo"><img src="../assets/logo.svg"></span>
@@ -34,11 +34,10 @@
 <script lang="ts">
     export default{
         name: 'Editor',
-        data(){
-
-        },
         methods: {
-            slideSidebar(){}
+            slideAction(){
+                this.$emit('slideAction')
+            }
         }
     }
 </script>
