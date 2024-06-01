@@ -1,13 +1,17 @@
 <script lang="ts">
+import Sidebar from '@/components/Sidebar.vue'
   export default{
-    name: 'App'
+    name: 'App',
+    components: {
+      Sidebar
+    }
   }
 </script>
 
 <template>
-    <h1>Hello MotherFuckers!</h1>
+   <sidebar></sidebar>
 </template>
 
 <style>
-
+  
 </style>

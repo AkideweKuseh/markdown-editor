@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap');
+
+/* Declaring root Variables */
+:root {
+    /* Header Colors */
+    --btnIdleColor: #E46643;
+    --btnHoverColor: #F39765;
+    --primaryColor: #FFFFFF;
+    --headerBackgroundColor: #2B2D31;
+    --smallTextColor: #7C8187;
+    --navIconBacroundColor: #35393F;
+
+    /* Inner Headers Colors*/
+    --innerHeaderTextColor: #7C8187;
+    --innerHeaderBackgroundColor: #F5F5F5;
+
+    /* Sidebar Colors */
+    --sidebarColor: #1D1F22;
+    --togglerBackground: #5A6069;
+}
+
+*{
+    padding: 0;
+    margin: 0;
+    user-select: none;
+}
+
+body{
+    font-family: "Roboto Slab", serif;
+}
+
+h1{
+    font-size: 32px;
+    color: var(--navIconBacroundColor);
+}
+
+h2{
+    font-size: 28px;
+    color: var(--navIconBacroundColor);
+}
+
+h3{
+    font-size: 24px;
+    color: var(--navIconBacroundColor);
+}
+
+h4{
+    font-size: 20px;
+    color: var(--navIconBacroundColor);
+}
+
+h5{
+    font-size: 16px;
+    color: var(--navIconBacroundColor);
+}
+
+h6{
+    font-size: 14px;
+    color: var(--btnIdelColor);
+}
+
