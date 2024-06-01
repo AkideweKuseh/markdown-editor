@@ -1,11 +1,11 @@
 <template>
     <div class="main-content" id="main-content">
-        <div class="header" id="header">
+        <div class="header menu-active" id="header">
             <div class="header-left">
                 <button class="menu-btn" @click="slideAction">
                     <img src="../assets/icon-menu.svg">
                 </button>
-                <button class="close-btn">
+                <button class="close-btn" @click="slideAction">
                     <img src="../assets/icon-close.svg">
                 </button>
                 <span class="logo"><img src="../assets/logo.svg"></span>
@@ -66,17 +66,17 @@
         background: var(--navIconBacroundColor);
     }
 
-    .close-btn {
+    /* .close-btn {
         display: block;
     }
 
-    .header.menu-active .menu-btn {
+    .menu-active .menu-btn {
          display: none;
     }
 
-    .header.menu-active .close-btn {
+    .menu-active .close-btn {
         display: block;
-    }
+    } */
 
     .header {
         display: flex;
@@ -87,6 +87,7 @@
         width: 100%;
         color: var(--primaryColor);
         font-family: sans-serif;
+        overflow: hidden;
     }
 
     .header-left{
@@ -117,6 +118,7 @@
     .header-right{
         display: flex;
         align-items: center;
+        margin-right: 2rem;
     }
 
     .header-right .btn-save{
@@ -138,6 +140,7 @@
     .markdown-editor {
         display: flex;
         height: calc(100vh - 50px);
+        color: var(--textColor);
     }
 
     .markdown {

@@ -9,6 +9,7 @@
     --headerBackgroundColor: #2B2D31;
     --smallTextColor: #7C8187;
     --navIconBacroundColor: #35393F;
+    --textColor: #35393F;
 
     /* Inner Headers Colors*/
     --innerHeaderTextColor: #7C8187;
@@ -63,20 +64,5 @@ h6{
     color: var(--btnIdelColor);
 }
 
-.sidebar .hidden {
-    transform: translateX(-100%);
-}
-
-.main-content .full-width {
-    margin-left: 0;
-}
-
-.header .menu-active .menu-btn {
-    display: none;
-}
-  
-  .header .menu-active .close-btn {
-    display: block;
-}
 
 

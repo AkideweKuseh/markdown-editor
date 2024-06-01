@@ -14,7 +14,14 @@ import Editor from '@/components/Editor.vue'
     },
     methods: {
       slideSidebar(){
-        
+        const Sidebar = document.getElementById('sidebar')!;
+        const mainContent = document.getElementById('main-content')!;
+        const header = document.getElementById('header')!;
+
+
+        Sidebar.classList.toggle('hidden');
+        mainContent.classList.toggle('full-width');
+        header.classList.toggle('menu-active')
       }
     }
   }
@@ -22,9 +29,28 @@ import Editor from '@/components/Editor.vue'
 
 <template>
    <sidebar></sidebar>
-   <editor></editor>
+   <editor @slide-action="slideSidebar"></editor>
 </template>
 
 <style>
+    .hidden {
+      transform: translateX(-100%);
+  }
+
+    .full-width {
+      margin-left: 0;
+  }
+
+     .menu-btn {
+      display: block;
+  }
   
+    .menu-active .close-btn {
+      display: block;
+  }
+
+    .menu-active .menu-btn{
+      display: none;
+    }
+
 </style>
