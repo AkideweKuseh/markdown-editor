@@ -20,7 +20,7 @@ import Editor from '@/components/Editor.vue'
 
 
         Sidebar.classList.toggle('hidden');
-        mainContent.classList.toggle('full-width');
+        mainContent.classList.toggle('slide');
         header.classList.toggle('menu-active')
       }
     }
@@ -37,8 +37,8 @@ import Editor from '@/components/Editor.vue'
       transform: translateX(-100%);
   }
 
-    .full-width {
-      margin-left: 0;
+    .slide {
+      transform: translateX(250px);
   }
 
      .menu-btn {

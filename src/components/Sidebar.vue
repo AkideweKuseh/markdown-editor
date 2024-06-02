@@ -1,5 +1,5 @@
 <template>
-    <div class="sidebar" id="sidebar">
+    <div class="sidebar hidden" id="sidebar">
         <div class="sidebar-header">
             <span>MY DOCUMENTS</span>
         </div>
@@ -48,15 +48,15 @@
 
 <style>
     .sidebar {
-        width: 233px;
+        width: 250px;
         background: var(--sidebarColor);
         color: white;
         position: fixed;
         top: 0;
         bottom: 0;
         left: 0;
-        padding: 0 1rem;
-        transition: transform 0.3s ease-in-out;
+        padding: 1rem;
+        transition: transform 0.5s ease-in-out;
         transform: translateX(0);
         font-family: sans-serif;
     }
@@ -69,7 +69,7 @@
     .btn{
         padding: 10px;
         border-radius: 5px;
-        width: 100%;
+        width: 90%;
         margin-top: 1.5rem;
         background: var(--btnIdleColor);
         border: none;

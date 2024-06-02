@@ -1,6 +1,6 @@
 <template>
     <div class="main-content" id="main-content">
-        <div class="header menu-active" id="header">
+        <div class="header" id="header">
             <div class="header-left">
                 <button class="menu-btn" @click="slideAction">
                     <img src="../assets/icon-menu.svg">
@@ -25,8 +25,9 @@
             </div>
         </div>
         <div class="markdown-editor">
-            <textarea class="markdown" id="markdown"></textarea>
-            <div class="preview" id="preview"></div>
+            <textarea class="markdown" id="markdown" v-model="markdown">
+            </textarea>
+            <div class="preview" id="preview">{{ markdown }}</div>
         </div>
     </div>
 </template>
@@ -34,6 +35,11 @@
 <script lang="ts">
     export default{
         name: 'Editor',
+        data(){
+            return{
+                markdown: '',
+            }
+        },
         methods: {
             slideAction(){
                 this.$emit('slideAction')
@@ -45,11 +51,12 @@
 <style>
     .main-content {
         flex: 1;
-        margin-left: 265px;
-        transition: margin-left 0.3s ease-in-out;
+        margin-left: 0px;
+        transition: 0.5s ease-in-out;
         display: flex;
         flex-direction: column;
         height: 100vh;
+        min-width: 100wv;
         padding: auto;
     }
 
@@ -58,13 +65,14 @@
         border: none;
         font-size: 24px;
         cursor: pointer;
-        margin-right: 10px;
         display: none;
+        position: relative;
+        left: 0;
     }
 
-    .close-btn:hover {
+    /* .close-btn:hover {
         background: var(--navIconBacroundColor);
-    }
+    } */
 
     /* .close-btn {
         display: block;
@@ -112,25 +120,28 @@
         border: none;
         outline: none;
         color: var(--primaryColor);
-        border-bottom: 1px solid var(--btnIdleColor);
+        border-bottom: 1px solid var(--primaryColor);
     }
 
     .header-right{
         display: flex;
         align-items: center;
-        margin-right: 2rem;
     }
 
     .header-right .btn-save{
-        padding: 5px;
+        padding: 10px 16px;
         display: flex;
         align-items: center;
-        margin-left: 1rem;
+        margin: 0 1rem;
         border-radius: 5px;
         background: var(--btnIdleColor);
         border: none;
         color: var(--primaryColor);
         cursor: pointer;
+    }
+
+    .header-right .btn-save:hover{
+        background: var(--btnHoverColor);
     }
 
     .header-right .save-icon{
