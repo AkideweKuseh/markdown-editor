@@ -106,8 +106,8 @@
 
     .toggler{
         position: fixed;
-        bottom: 10px;
-        left: 20px;
+        bottom: 30px;
+        left: 30px;
         display: flex;
         justify-content: space-between;
         align-items: center;

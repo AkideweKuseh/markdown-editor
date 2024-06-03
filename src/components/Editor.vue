@@ -25,9 +25,21 @@
             </div>
         </div>
         <div class="markdown-editor">
-            <textarea class="markdown" id="markdown" v-model="markdown">
-            </textarea>
-            <div class="preview" id="preview">{{ markdown }}</div>
+            <div class="text-container">
+                <div class="inner-header"><span>MARKDOWN</span></div>
+                <textarea class="markdown" id="markdown" v-model="markdown">
+                </textarea>
+            </div>
+            <div class="preview-box" id="preview-box">
+                <div class="inner-header">
+                    <span>PREVIEW</span>
+                    <div class="preview-toggle">
+                        <img src="../assets/icon-show-preview.svg" class="show-preview">
+                        <img src="../assets/icon-hide-preview.svg" class="hide-preview">
+                    </div>
+                </div>
+                <div class="preview">{{ markdown }}</div>
+            </div>
         </div>
     </div>
 </template>
@@ -49,6 +61,14 @@
 </script>
 
 <style>
+    .inner-header .preview-toggle{
+        display: flex;
+    }
+
+    .inner-header .preview-toggle .hide-preview{
+        display: none;
+    }
+
     .main-content {
         flex: 1;
         margin-left: 0px;
@@ -91,7 +111,7 @@
         align-items: center;
         justify-content: space-between;
         background: var(--headerBackgroundColor);
-        padding: 10px;
+        padding: 20px 10px;
         width: 100%;
         color: var(--primaryColor);
         font-family: sans-serif;
@@ -120,6 +140,10 @@
         border: none;
         outline: none;
         color: var(--primaryColor);
+        caret-color: var(--btnIdleColor);
+    }
+
+    .document input:focus{
         border-bottom: 1px solid var(--primaryColor);
     }
 
@@ -148,26 +172,49 @@
         margin-right: 0.5rem;
     }
 
+    .inner-header{
+        background: var(--innerHeaderBackgroundColor);
+        color: var(--innerHeaderTextColor);
+        padding: 10px;
+        font-family: Commissioner, sans-serif;
+        letter-spacing: 4px;
+        font-size: 13px;
+    }
+
     .markdown-editor {
         display: flex;
         height: calc(100vh - 50px);
         color: var(--textColor);
+        background: var(--primaryColor);
+    }
+
+    .text-container{
+        width: 50%;
     }
 
     .markdown {
-        width: 50%;
-        padding: 10px;
+        width: 90%;
+        padding: 20px 20px;
         border: none;
         resize: none;
         outline: none;
         font-size: 16px;
+        height: 90%;
     }
 
-    .preview {
+    .preview-box {
         width: 50%;
-        padding: 10px;
-        overflow-y: auto;
+        overflow: hidden;
         border-left: 1px solid #bdc3c7;
     }
 
+    .preview-box .inner-header{
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .preview{
+        width: 100%;
+        padding: 20px;
+    }
 </style>
