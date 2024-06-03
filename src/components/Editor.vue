@@ -42,13 +42,15 @@
                         @click="changePreview">
                     </div>
                 </div>
-                <div class="preview">{{ markdown }}</div>
+                <div class="preview" v-html="markdownToHtml"></div>
             </div>
         </div>
     </div>
 </template>
 
 <script lang="ts">
+    import { marked } from 'marked'
+
     export default{
         name: 'Editor',
         data(){
@@ -62,6 +64,11 @@
             },
             changePreview(){
                 this.$emit('slide-preview')
+            }
+        },
+        computed:{
+            markdownToHtml(){
+                return marked(this.markdown)
             }
         }
     }
