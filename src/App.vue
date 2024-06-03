@@ -22,6 +22,17 @@ import Editor from '@/components/Editor.vue'
         Sidebar.classList.toggle('hidden');
         mainContent.classList.toggle('slide');
         header.classList.toggle('menu-active')
+      },
+      slidePreview(){
+        const markdown = document.getElementById('text-container')!;
+        const preview = document.getElementById('preview-box')!;
+        const showIcon = document.getElementById('preview-markdown')!;
+        const hiddenIcon = document.getElementById('preview-only')!;
+
+        markdown.classList.toggle('hide-markdown');
+        preview.classList.toggle('show-preview');
+        showIcon.classList.toggle('hide-icon');
+        hiddenIcon.classList.toggle('hide-icon')
       }
     }
   }
@@ -29,7 +40,7 @@ import Editor from '@/components/Editor.vue'
 
 <template>
    <sidebar></sidebar>
-   <editor @slide-action="slideSidebar"></editor>
+   <editor @slide-action="slideSidebar" @slide-preview="slidePreview"></editor>
 </template>
 
 <style>
@@ -53,4 +64,15 @@ import Editor from '@/components/Editor.vue'
       display: none;
     }
 
+    .show-preview{
+    width: 100%;
+  }
+
+    .hide-markdown{
+    width: 0;
+  }
+
+  .hide-icon{
+    display: none;
+  }
 </style>

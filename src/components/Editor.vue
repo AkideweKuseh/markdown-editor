@@ -25,7 +25,7 @@
             </div>
         </div>
         <div class="markdown-editor">
-            <div class="text-container">
+            <div class="text-container" id="text-container">
                 <div class="inner-header"><span>MARKDOWN</span></div>
                 <textarea class="markdown" id="markdown" v-model="markdown">
                 </textarea>
@@ -34,8 +34,12 @@
                 <div class="inner-header">
                     <span>PREVIEW</span>
                     <div class="preview-toggle">
-                        <img src="../assets/icon-show-preview.svg" class="show-preview">
-                        <img src="../assets/icon-hide-preview.svg" class="hide-preview">
+                        <img src="../assets/icon-show-preview.svg" class="show-preview"
+                        id="preview-markdown" 
+                        @click="changePreview">
+                        <img src="../assets/icon-hide-preview.svg" class="hide-preview hide-icon"
+                        id="preview-only"
+                        @click="changePreview">
                     </div>
                 </div>
                 <div class="preview">{{ markdown }}</div>
@@ -55,6 +59,9 @@
         methods: {
             slideAction(){
                 this.$emit('slideAction')
+            },
+            changePreview(){
+                this.$emit('slide-preview')
             }
         }
     }
@@ -63,10 +70,7 @@
 <style>
     .inner-header .preview-toggle{
         display: flex;
-    }
-
-    .inner-header .preview-toggle .hide-preview{
-        display: none;
+        cursor: pointer;
     }
 
     .main-content {
@@ -89,22 +93,6 @@
         position: relative;
         left: 0;
     }
-
-    /* .close-btn:hover {
-        background: var(--navIconBacroundColor);
-    } */
-
-    /* .close-btn {
-        display: block;
-    }
-
-    .menu-active .menu-btn {
-         display: none;
-    }
-
-    .menu-active .close-btn {
-        display: block;
-    } */
 
     .header {
         display: flex;
@@ -190,6 +178,7 @@
 
     .text-container{
         width: 50%;
+        transition: all 0.5s ease;
     }
 
     .markdown {
@@ -206,6 +195,7 @@
         width: 50%;
         overflow: hidden;
         border-left: 1px solid #bdc3c7;
+        transition: all 0.5s ease;
     }
 
     .preview-box .inner-header{
@@ -214,7 +204,7 @@
     }
 
     .preview{
-        width: 100%;
+        width: inherit;
         padding: 20px;
     }
 </style>
