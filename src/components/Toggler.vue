@@ -17,8 +17,8 @@
   position: relative;
   display: inline-block;
   margin: 0 5px;
-  width: 30px;
-  height: 17px;
+  width: 40px;
+  height: 20px;
 }
 
 /* Hide default HTML checkbox */
@@ -44,27 +44,19 @@
 .slider:before {
   position: absolute;
   content: "";
-  height: 13px;
-  width: 13px;
-  left: 2px;
-  bottom: 2px;
+  height: 10px;
+  width: 10px;
+  right: 6px;
+  bottom: 4px;
   background-color: white;
   -webkit-transition: .4s;
   transition: .4s;
 }
 
-/* input:checked + .slider {
-  background-color: #2196F3;
-}
-
-input:focus + .slider {
-  box-shadow: 0 0 1px #2196F3;
-} */
-
 input:checked + .slider:before {
-  -webkit-transform: translateX(13px);
-  -ms-transform: translateX(13px);
-  transform: translateX(13px);
+  -webkit-transform: translateX(-20px);
+  -ms-transform: translateX(-20px);
+  transform: translateX(-20px);
 }
 
 /* Rounded sliders */

@@ -80,8 +80,6 @@
         display: flex;
         flex-direction: column;
         height: 100vh;
-        min-width: 100wv;
-        padding: auto;
     }
 
     .menu-btn, .close-btn {
@@ -172,23 +170,26 @@
     .markdown-editor {
         display: flex;
         height: calc(100vh - 50px);
-        color: var(--textColor);
-        background: var(--primaryColor);
     }
 
     .text-container{
+        position: relative;
         width: 50%;
         transition: all 0.5s ease;
     }
 
     .markdown {
-        width: 90%;
+        position: absolute;
+        left: 0;
+        right: 0;
         padding: 20px 20px;
         border: none;
         resize: none;
         outline: none;
-        font-size: 16px;
+        font-size: 14px;
         height: 90%;
+        color: var(--textColor);
+        background: var(--primaryColor);
     }
 
     .preview-box {
@@ -196,6 +197,7 @@
         overflow: hidden;
         border-left: 1px solid #bdc3c7;
         transition: all 0.5s ease;
+        z-index: 2;
     }
 
     .preview-box .inner-header{
@@ -204,7 +206,10 @@
     }
 
     .preview{
-        width: inherit;
+        width: auto;
+        height: 100%;
         padding: 20px;
+        color: var(--textColor);
+        background: var(--primaryColor);
     }
 </style>
