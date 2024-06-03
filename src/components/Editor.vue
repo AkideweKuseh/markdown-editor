@@ -165,10 +165,14 @@
         margin-right: 0.5rem;
     }
 
+    .header-right .delete-icon:hover{
+        filter: invert(50%) sepia(100%) saturate(400%) hue-rotate(-30deg);
+    }
+
     .inner-header{
         background: var(--innerHeaderBackgroundColor);
         color: var(--innerHeaderTextColor);
-        padding: 10px;
+        padding: 10px 10px 10px 20px;
         font-family: Commissioner, sans-serif;
         letter-spacing: 4px;
         font-size: 13px;

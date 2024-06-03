@@ -1,11 +1,13 @@
 <script lang="ts">
 import Sidebar from '@/components/Sidebar.vue'
 import Editor from '@/components/Editor.vue'
+import Toggler from './components/Toggler.vue';
   export default{
     name: 'App',
     components: {
       Sidebar,
-      Editor
+      Editor,
+      Toggler
     },
     data(){
       return{
@@ -33,13 +35,33 @@ import Editor from '@/components/Editor.vue'
         preview.classList.toggle('show-preview');
         showIcon.classList.toggle('hide-icon');
         hiddenIcon.classList.toggle('hide-icon')
+      },
+      switchTheme(){
+        const toggleSwitch = document.getElementById('toggle-switch')!;
+        const sunIcon = document.getElementById('sun')!;
+        const moonIcon = document.getElementById('moon')!;
+        const workSpace = document.querySelector('.markdown-editor')!;
+
+        toggleSwitch.addEventListener('change', (event) =>{
+            if((<HTMLInputElement>event.target).checked){
+                sunIcon.classList.remove('active-theme');
+                moonIcon.classList.add('active-theme');
+
+                workSpace.classList.add('dark-theme');
+            }else{
+                sunIcon.classList.add('active-theme');
+                moonIcon.classList.remove('active-theme');
+
+                workSpace.classList.remove('dark-theme');
+            }
+        });
       }
     }
   }
 </script>
 
 <template>
-   <sidebar></sidebar>
+   <sidebar @change-theme="switchTheme"></sidebar>
    <editor @slide-action="slideSidebar" @slide-preview="slidePreview"></editor>
 </template>
 

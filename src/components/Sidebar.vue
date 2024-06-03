@@ -28,9 +28,9 @@
                 </li>
             </ul>
             <div class="toggler">
-                <img src="../assets/icon-dark-mode.svg" />
-                <toggler></toggler>
-                <img src="../assets/icon-light-mode.svg" />
+                <img src="../assets/icon-dark-mode.svg" id="moon" />
+                <toggler @change-theme="changeTheme"></toggler>
+                <img class="active-theme" id="sun" src="../assets/icon-light-mode.svg" />
             </div>
         </div>
     </div>
@@ -42,6 +42,11 @@
         name: 'Sidebar',
         components: {
             Toggler
+        },
+        methods: {
+            changeTheme(){
+                this.$emit('changeTheme')
+            }
         }
     }
 </script>
@@ -115,5 +120,9 @@
 
     .toggler button{
         margin: 0 5px;
+    }
+
+    .active-theme{
+        filter: invert(100%) brightness(1000%);
     }
 </style>

@@ -1,13 +1,18 @@
 <template>
     <label class="switch">
-      <input type="checkbox">
+      <input type="checkbox" id="toggle-switch" @click="changeTheme">
       <span class="slider round"></span>
     </label>
 </template>
 
 <script lang="ts">
     export default{
-        name: 'Toggler'
+        name: 'Toggler',
+        methods: {
+          changeTheme(){
+            this.$emit('changeTheme')
+          }
+        }
     }
 </script>
 
@@ -54,12 +59,9 @@
 }
 
 input:checked + .slider:before {
-  -webkit-transform: translateX(-20px);
-  -ms-transform: translateX(-20px);
   transform: translateX(-20px);
 }
 
-/* Rounded sliders */
 .slider.round {
   border-radius: 34px;
 }
