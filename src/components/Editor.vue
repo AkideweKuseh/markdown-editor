@@ -14,7 +14,7 @@
                             <img src="../assets/icon-document.svg" />
                         </div>
                     <div class="file-info">
-                        <small>01 April 2022</small><br>
+                        <small>Document Name</small><br>
                         <span><input type="text" value="untitled-document.md"></span>
                     </div>
                     </div>  
@@ -100,6 +100,7 @@
     }
 
     .header {
+        position: static;
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -187,6 +188,8 @@
         position: relative;
         width: 50%;
         transition: all 0.5s ease;
+        color: var(--textColor);
+        background: var(--primaryColor);
     }
 
     .markdown {
@@ -209,6 +212,8 @@
         border-left: 1px solid #bdc3c7;
         transition: all 0.5s ease;
         z-index: 2;
+        color: var(--textColor);
+        background: var(--primaryColor);
     }
 
     .preview-box .inner-header{

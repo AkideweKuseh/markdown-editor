@@ -52,7 +52,7 @@ import Toggler from './components/Toggler.vue';
                 sunIcon.classList.add('active-theme');
                 moonIcon.classList.remove('active-theme');
 
-                workSpace.classList.remove('dark-theme');
+                workSpace.classList.remove  ('dark-theme');
             }
         });
       }

@@ -53,7 +53,7 @@
 
 <style>
     .sidebar {
-        width: 250px;
+        width: 219px;
         background: var(--sidebarColor);
         color: white;
         position: fixed;
