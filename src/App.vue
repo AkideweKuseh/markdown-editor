@@ -88,6 +88,7 @@ import Toggler from './components/Toggler.vue';
 
     .show-preview{
     width: 100%;
+    text-align: center;
   }
 
     .hide-markdown{

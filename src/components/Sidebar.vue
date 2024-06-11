@@ -58,8 +58,8 @@
         color: white;
         position: fixed;
         top: 0;
-        bottom: 0;
         left: 0;
+        min-height: 100vh;
         padding: 1rem;
         transition: transform 0.5s ease-in-out;
         transform: translateX(0);
@@ -111,7 +111,7 @@
 
     .toggler{
         position: fixed;
-        bottom: 30px;
+        bottom: 50px;
         left: 30px;
         display: flex;
         justify-content: space-between;

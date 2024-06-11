@@ -21,7 +21,12 @@
             </div>
             <div class="header-right">
                 <img class="delete-icon" src="../assets/icon-delete.svg"/>
-                <button class="btn-save"><img class="save-icon" src="../assets/icon-save.svg"/>Save Changes</button>
+                <button class="btn-savemobile">
+                    <img src="../assets/icon-save.svg"/>
+                </button>
+                <button class="btn-save">
+                    <img class="save-icon" src="../assets/icon-save.svg"/>Save Changes
+                </button>
             </div>
         </div>
         <div class="markdown-editor">
@@ -86,7 +91,7 @@
         transition: 0.5s ease-in-out;
         display: flex;
         flex-direction: column;
-        height: 100vh;
+        min-height: 100vh;
     }
 
     .menu-btn, .close-btn {
@@ -121,6 +126,23 @@
         padding: 10px 30px;
         border-right: 1px solid var(--smallTextColor);
     }
+/* Move media query code down */
+    @media (max-width: 768px){
+        .header .logo{
+            display: none;
+        }
+    }
+
+    @media (max-width: 446px){
+        .header .header-right .btn-save{
+            display: none;
+        }
+
+        .header .header-right .btn-savemobile{
+            display: block;
+        }
+    }
+
     .header-left .document{
         margin-left: 2rem;
     }
@@ -162,12 +184,24 @@
         background: var(--btnHoverColor);
     }
 
+    .header-right .btn-savemobile{
+        display: none;
+        padding: 5px;
+        margin: 0 1rem;
+        border-radius: 5px;
+        background: var(--btnIdleColor);
+        border: none;
+        color: var(--primaryColor);
+        cursor: pointer;
+    }
+
     .header-right .save-icon{
         margin-right: 0.5rem;
     }
 
     .header-right .delete-icon:hover{
         filter: invert(50%) sepia(100%) saturate(400%) hue-rotate(-30deg);
+        cursor: pointer;
     }
 
     .inner-header{
@@ -182,6 +216,8 @@
     .markdown-editor {
         display: flex;
         height: calc(100vh - 50px);
+        color: var(--textColor);
+        background: var(--primaryColor);
     }
 
     .text-container{
@@ -204,10 +240,12 @@
         height: 90%;
         color: var(--textColor);
         background: var(--primaryColor);
+        overflow: hidden;
     }
 
     .preview-box {
         width: 50%;
+        min-height: 100vh;
         overflow: hidden;
         border-left: 1px solid #bdc3c7;
         transition: all 0.5s ease;
@@ -227,5 +265,6 @@
         padding: 20px;
         color: var(--textColor);
         background: var(--primaryColor);
+        transition: all 1s ease;
     }
 </style>
