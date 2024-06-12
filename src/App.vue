@@ -2,16 +2,19 @@
 import Sidebar from '@/components/Sidebar.vue'
 import Editor from '@/components/Editor.vue'
 import Toggler from './components/Toggler.vue';
+import data from '@/data.json'
+
   export default{
     name: 'App',
     components: {
-      Sidebar,
+      Sidebar, 
       Editor,
       Toggler
     },
     data(){
       return{
         menuActive: false,
+        files: data
       }
     },
     methods: {
@@ -87,12 +90,11 @@ import Toggler from './components/Toggler.vue';
     }
 
     .show-preview{
-    width: 100%;
-    text-align: center;
+    width: 100% !important;
   }
 
     .hide-markdown{
-    width: 0;
+    width: 0 !important;
   }
 
   .hide-icon{

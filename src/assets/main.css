@@ -45,31 +45,32 @@ body{
 
 h1{
     font-size: 32px;
+    color: var(--textColor);
 }
 
 h2{
     font-size: 28px;
-    color: var(--navIconBacroundColor);
+    color: var(--textColor);
 }
 
 h3{
     font-size: 24px;
-    color: var(--navIconBacroundColor);
+    color: var(--textColor);
 }
 
 h4{
     font-size: 20px;
-    color: var(--navIconBacroundColor);
+    color: var(--textColor);
 }
 
 h5{
     font-size: 16px;
-    color: var(--navIconBacroundColor);
+    color: var(--textColor);
 }
 
 h6{
     font-size: 14px;
-    color: var(--btnIdelColor);
+    color: var(--btnIdleColor);
 }
 
 

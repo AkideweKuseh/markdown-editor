@@ -1,28 +1,19 @@
 <template>
     <div class="sidebar hidden" id="sidebar">
         <div class="sidebar-header">
+            <div class="logo"><img src="../assets/logo.svg"></div>
             <span>MY DOCUMENTS</span>
         </div>
         <div class="sidebar-content">
             <button class="btn">+ New Document</button>
             <ul class="documents">
-                <li>
+                <li v-for="file in files" :key="file.name">
                     <div class="document">
                         <div class="file-icon">
                             <img src="../assets/icon-document.svg" />
                         </div>
                     <div class="file-info">
-                        <small>01 April 2022</small><br><span>untitled-document.md</span>
-                    </div>
-                    </div>  
-                </li>
-                <li>
-                    <div class="document">
-                        <div class="file-icon">
-                            <img src="../assets/icon-document.svg" />
-                        </div>
-                    <div class="file-info">
-                        <small>01 April 2022</small><br><span>untitled-document.md</span>
+                        <small>{{ file.createdAt }}</small><br><span>{{ file.name }}</span>
                     </div>
                     </div>  
                 </li>
@@ -38,10 +29,22 @@
 
 <script  lang="ts">
     import Toggler from './Toggler.vue'
+    import data from '@/data.json'
     export default{
         name: 'Sidebar',
+        // props: {
+        //     files: {
+        //         type: Array,
+        //         required: true
+        //     }
+        // },
         components: {
             Toggler
+        },
+        data(){
+            return{
+                files: data
+            }
         },
         methods: {
             changeTheme(){
@@ -124,5 +127,16 @@
 
     .active-theme{
         filter: invert(100%) brightness(1000%);
+    }
+
+    .sidebar-header .logo{
+        margin-bottom: 1rem;
+        display: none;
+    }
+
+    @media (max-width: 768px){
+        .sidebar-header .logo{
+        display: block;
+    }
     }
 </style>

@@ -31,7 +31,10 @@
         </div>
         <div class="markdown-editor">
             <div class="text-container" id="text-container">
-                <div class="inner-header"><span>MARKDOWN</span></div>
+                <div class="inner-header">
+                    <span>MARKDOWN</span>
+                    <img src="../assets/icon-show-preview.svg" class="preview-mobile" @click="changePreview">
+                </div>
                 <textarea class="markdown" id="markdown" v-model="markdown">
                 </textarea>
             </div>
@@ -85,6 +88,9 @@
         cursor: pointer;
     }
 
+    .inner-header .preview-mobile{
+        display: none;
+    }
     .main-content {
         flex: 1;
         margin-left: 0px;
@@ -131,9 +137,21 @@
         .header .logo{
             display: none;
         }
+        .header{
+            width: 98%;
+        }
     }
 
     @media (max-width: 446px){
+
+        .markdown-editor .preview-box{
+            width: 0;
+        }
+
+        .markdown-editor .text-container{
+            width: 100%;
+        }
+
         .header .header-right .btn-save{
             display: none;
         }
@@ -142,17 +160,20 @@
             display: block;
         }
 
-        .document{
-            display: flex;
-            align-items: center;
-        }
-
         .document .file-info br{
             display: none;
         }
 
         .document .file-info small{
             display: none;
+        }
+
+        .inner-header .preview-mobile{
+            display: inline;
+        }
+
+        .header{
+            width: 96%;
         }
     }
 
@@ -218,6 +239,8 @@
     }
 
     .inner-header{
+        display: flex;
+        justify-content: space-between;
         background: var(--innerHeaderBackgroundColor);
         color: var(--innerHeaderTextColor);
         padding: 10px 10px 10px 20px;
