@@ -17,7 +17,7 @@
                         <small>Document Name</small><br>
                         <span><input type="text" value="untitled-document.md"></span>
                     </div>
-                    </div>  
+                </div>  
             </div>
             <div class="header-right">
                 <img class="delete-icon" src="../assets/icon-delete.svg"/>
@@ -140,6 +140,19 @@
 
         .header .header-right .btn-savemobile{
             display: block;
+        }
+
+        .document{
+            display: flex;
+            align-items: center;
+        }
+
+        .document .file-info br{
+            display: none;
+        }
+
+        .document .file-info small{
+            display: none;
         }
     }
 
