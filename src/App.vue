@@ -64,7 +64,7 @@ import data from '@/data.json'
 </script>
 
 <template>
-   <sidebar @change-theme="switchTheme"></sidebar>
+   <sidebar @change-theme="switchTheme" :files="files"></sidebar>
    <editor @slide-action="slideSidebar" @slide-preview="slidePreview"></editor>
 </template>
 

@@ -28,23 +28,25 @@
 </template>
 
 <script  lang="ts">
-    import Toggler from './Toggler.vue'
-    import data from '@/data.json'
+    import type { PropType } from 'vue';
+import Toggler from './Toggler.vue'
+
+    interface File {
+        createdAt: string;
+        name: string;
+        content: string;
+    }
+
     export default{
         name: 'Sidebar',
-        // props: {
-        //     files: {
-        //         type: Array,
-        //         required: true
-        //     }
-        // },
+        props: {
+            files: {
+                type: Array as PropType<File[]>,
+                required: true
+            }
+        },
         components: {
             Toggler
-        },
-        data(){
-            return{
-                files: data
-            }
         },
         methods: {
             changeTheme(){
