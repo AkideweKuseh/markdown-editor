@@ -111,7 +111,8 @@
     }
 
     .header {
-        position: static;
+        position: sticky;
+        top: 0;
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -174,6 +175,10 @@
 
         .header{
             width: 96%;
+        }
+
+        .preview{
+            width: auto !important;
         }
     }
 
@@ -241,6 +246,9 @@
     .inner-header{
         display: flex;
         justify-content: space-between;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
         background: var(--innerHeaderBackgroundColor);
         color: var(--innerHeaderTextColor);
         padding: 10px 10px 10px 20px;
@@ -250,8 +258,9 @@
     }
 
     .markdown-editor {
+        position: static;
         display: flex;
-        height: calc(100vh - 50px);
+        height: calc(88vh - 10px);
         color: var(--textColor);
         background: var(--primaryColor);
     }
@@ -260,35 +269,44 @@
         position: relative;
         width: 50%;
         transition: all 0.5s ease;
+        overflow-y: auto;
         color: var(--textColor);
         background: var(--primaryColor);
     }
+
+    .text-container::-webkit-scrollbar {
+            display: none; /* WebKit browsers */
+        }
 
     .markdown {
         position: absolute;
         left: 0;
         right: 0;
-        padding: 20px 20px;
+        padding: 20px;
         border: none;
         resize: none;
         outline: none;
         font-size: 14px;
-        height: 90%;
+        height: 100%;
+        overflow: hidden;
         color: var(--textColor);
         background: var(--primaryColor);
-        overflow: hidden;
     }
+    
 
     .preview-box {
         width: 50%;
-        min-height: 100vh;
-        overflow: hidden;
         border-left: 1px solid #bdc3c7;
         transition: all 0.5s ease;
         z-index: 2;
+        overflow-y: auto;
         color: var(--textColor);
         background: var(--primaryColor);
     }
+
+    .preview-box::-webkit-scrollbar {
+            display: none; /* WebKit browsers */
+        }
 
     .preview-box .inner-header{
         display: flex;
@@ -297,8 +315,9 @@
 
     .preview{
         width: auto;
-        height: 100%;
+        height: 120%;
         padding: 20px;
+        font-size: small;
         color: var(--textColor);
         background: var(--primaryColor);
         transition: all 1s ease;

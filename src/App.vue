@@ -30,14 +30,16 @@ import data from '@/data.json'
       },
       slidePreview(){
         const markdown = document.getElementById('text-container')!;
-        const preview = document.getElementById('preview-box')!;
+        const previewBox = document.getElementById('preview-box')!;
         const showIcon = document.getElementById('preview-markdown')!;
         const hiddenIcon = document.getElementById('preview-only')!;
+        const preview = document.querySelector('.preview')!;
 
         markdown.classList.toggle('hide-markdown');
-        preview.classList.toggle('show-preview');
+        previewBox.classList.toggle('show-preview');
         showIcon.classList.toggle('hide-icon');
         hiddenIcon.classList.toggle('hide-icon')
+        preview.classList.toggle('resize-preview')
       },
       switchTheme(){
         const toggleSwitch = document.getElementById('toggle-switch')!;
@@ -69,6 +71,11 @@ import data from '@/data.json'
 </template>
 
 <style>
+  .resize-preview{
+    width: 50%;
+    margin: 0 auto;
+  }
+
     .hidden {
       transform: translateX(-100%);
   }

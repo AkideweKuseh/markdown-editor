@@ -2,7 +2,6 @@
 
 /* Declaring root Variables */
 :root {
-    /* Header Colors */
     --btnIdleColor: #E46643;
     --btnHoverColor: #F39765;
     --primaryColor: #FFFFFF;
@@ -10,6 +9,7 @@
     --smallTextColor: #7C8187;
     --navIconBacroundColor: #35393F;
     --textColor: #35393F;
+    --blockColor: #f4f4f4;
 
     /* Inner Headers Colors*/
     --innerHeaderTextColor: #7C8187;
@@ -25,6 +25,7 @@
     --textColor: #FFFFFF;
     --innerHeaderTextColor: #F5F5F5;
     --innerHeaderBackgroundColor: #1D1F22;
+    --blockColor: #5A6069;
 }
 
 *{
@@ -71,6 +72,40 @@ h5{
 h6{
     font-size: 14px;
     color: var(--btnIdleColor);
+}
+
+ul, ol {
+    margin: 1em 0;
+    padding-left: 40px;
+}
+
+ul li, ol li {
+    margin-bottom: 0.5em;
+}
+
+p {
+    margin: 0.5em 0;
+}
+
+blockquote {
+    margin: 1rem 0;
+    padding: 1rem;
+    background-color: var(--blockColor);
+    border-left: 5px solid #e67e22;
+    font-style: italic;
+    border-radius: 5px;
+}
+
+blockquote p {
+    margin: 0;
+}
+
+/* Code Blocks */
+code {
+    background-color: var(--blockColor);
+    padding: 0.2em 0.4em;
+    border-radius: 4px;
+    font-family: 'Courier New', Courier, monospace;
 }
 
 
