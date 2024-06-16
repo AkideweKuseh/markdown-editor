@@ -58,12 +58,25 @@
 
 <script lang="ts">
     import { marked } from 'marked'
+    import type { PropType } from 'vue';
+
+    interface File {
+        createdAt: string;
+        name: string;
+        content: string;
+    }
 
     export default{
         name: 'Editor',
         data(){
             return{
                 markdown: '',
+            }
+        },
+        props: {
+            files: {
+                type: Array as PropType<File[]>,
+                required: true
             }
         },
         methods: {

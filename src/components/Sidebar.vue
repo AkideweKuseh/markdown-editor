@@ -29,7 +29,7 @@
 
 <script  lang="ts">
     import type { PropType } from 'vue';
-import Toggler from './Toggler.vue'
+    import Toggler from './Toggler.vue'
 
     interface File {
         createdAt: string;
