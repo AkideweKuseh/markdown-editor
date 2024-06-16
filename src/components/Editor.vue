@@ -20,7 +20,7 @@
                 </div>  
             </div>
             <div class="header-right">
-                <img class="delete-icon" src="../assets/icon-delete.svg"/>
+                <img class="delete-icon" src="../assets/icon-delete.svg" @click="deleteDocument"/>
                 <button class="btn-savemobile">
                     <img src="../assets/icon-save.svg"/>
                 </button>
@@ -85,6 +85,9 @@
             },
             changePreview(){
                 this.$emit('slide-preview')
+            },
+            deleteDocument(){
+                this.$emit('deleteDocument')
             }
         },
         computed:{

@@ -4,6 +4,9 @@ import Editor from '@/components/Editor.vue'
 import Toggler from './components/Toggler.vue';
 import data from '@/data.json'
 
+  let theme;
+  // let getTheme = JSON.parse(localStorage.getItem('theme') || '{}');
+  //     console.log(getTheme)
 
   export default{
     name: 'App',
@@ -15,10 +18,14 @@ import data from '@/data.json'
     data(){
       return{
         menuActive: false,
-        files: data
+        files: data,
+        selectedFileContent: ''
       }
     },
     methods: {
+      displayFile(){
+        console.log('emited')
+      },
       slideSidebar(){
         const Sidebar = document.getElementById('sidebar')!;
         const mainContent = document.getElementById('main-content')!;
@@ -67,14 +74,11 @@ import data from '@/data.json'
         // });
 
         // using localStorage to save theme state
-
-        let theme;
+ 
         if(workSpace.classList.contains('dark-theme')){
             theme = 'DARK';
-            //console.log('DARK')
         }else{
             theme = 'LIGHT'
-            //console.log('LIGHT')
         }
 
         localStorage.setItem('theme', JSON.stringify(theme));
@@ -85,7 +89,7 @@ import data from '@/data.json'
 </script>
 
 <template>
-   <sidebar @change-theme="switchTheme" :files="files"></sidebar>
+   <sidebar @change-theme="switchTheme" :files="files" @fileSelected="displayFile"></sidebar>
    <editor @slide-action="slideSidebar" @slide-preview="slidePreview" :files="files"></editor>
 </template>
 

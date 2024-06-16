@@ -7,7 +7,7 @@
         <div class="sidebar-content">
             <button class="btn">+ New Document</button>
             <ul class="documents">
-                <li v-for="file in files" :key="file.name">
+                <li v-for="file in files" :key="file.name" @click="fileSelect(file)">
                     <div class="document">
                         <div class="file-icon">
                             <img src="../assets/icon-document.svg" />
@@ -51,6 +51,10 @@
         methods: {
             changeTheme(){
                 this.$emit('changeTheme')
+            },
+            fileSelect(file :File){
+                console.log(file)
+                this.$emit('fileSelected', file)
             }
         }
     }
@@ -99,6 +103,11 @@
 
     .documents li {
         padding: 10px 0;
+    }
+
+    .documents li:hover{
+        color: var(--btnIdleColor);
+        cursor: pointer;
     }
 
     .documents li small{
