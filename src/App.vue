@@ -2,29 +2,47 @@
 import Sidebar from '@/components/Sidebar.vue'
 import Editor from '@/components/Editor.vue'
 import Toggler from './components/Toggler.vue';
+import Modal from './components/Modal.vue';
 import data from '@/data.json'
+
+interface File {
+        createdAt: string;
+        name: string;
+        content: string;
+    }
 
   let theme;
   // let getTheme = JSON.parse(localStorage.getItem('theme') || '{}');
-  //     console.log(getTheme)
+  // console.log(getTheme)
 
   export default{
     name: 'App',
     components: {
+      Modal,
       Sidebar, 
       Editor,
-      Toggler
+      Toggler,
     },
     data(){
       return{
         menuActive: false,
         files: data,
-        selectedFileContent: ''
+        selectedFileContent: '',
+        deleteFile: false,
+        fileToDelete: ''
       }
     },
     methods: {
-      displayFile(){
-        console.log('emited')
+      displayFile(file: File){
+        //this.selectedFileContent = file.content;
+
+        const activeMarkdown = document.getElementById('markdown') as HTMLTextAreaElement;
+        const fileName = document.getElementById('file-name') as HTMLInputElement;
+
+        activeMarkdown.value = file.content;
+        activeMarkdown.focus()
+
+        fileName.value = file.name
       },
       slideSidebar(){
         const Sidebar = document.getElementById('sidebar')!;
@@ -54,11 +72,13 @@ import data from '@/data.json'
         const sunIcon = document.getElementById('sun')!;
         const moonIcon = document.getElementById('moon')!;
         const workSpace = document.querySelector('.markdown-editor')!;
+        const modal = document.getElementById('popup')!;
 
         sunIcon.classList.toggle('active-theme');
         moonIcon.classList.toggle('active-theme');
         workSpace.classList.toggle('dark-theme');
-
+        modal.classList.toggle('dark-theme');
+      
         // toggleSwitch.addEventListener('change', (event) =>{
         //     if((<HTMLInputElement>event.target).checked){
         //         sunIcon.classList.remove('active-theme');
@@ -83,14 +103,47 @@ import data from '@/data.json'
 
         localStorage.setItem('theme', JSON.stringify(theme));
 
+      },
+      deleteItem(){
+        this.deleteFile = true;
+
+        const fileName = document.getElementById('file-name') as HTMLInputElement;
+
+        this.fileToDelete = fileName.value
+      },
+      exitModal(){
+        this.deleteFile = false;
+      },
+      createNewFile(){
+        const activeMarkdown = document.getElementById('markdown') as HTMLTextAreaElement;
+        const fileName = document.getElementById('file-name') as HTMLInputElement;
+        const newFile: File = {...this.files[0]};
+
+        this.files.unshift(newFile);
+        activeMarkdown.value = newFile.content;
+        activeMarkdown.focus();
+        fileName.value = newFile.name;
       }
     }
   }
 </script>
 
 <template>
-   <sidebar @change-theme="switchTheme" :files="files" @fileSelected="displayFile"></sidebar>
-   <editor @slide-action="slideSidebar" @slide-preview="slidePreview" :files="files"></editor>
+   <sidebar @change-theme="switchTheme" @newFile="createNewFile" :files="files" @fileSelected="displayFile($event)"></sidebar>
+   <editor 
+   @slide-action="slideSidebar" 
+   @slide-preview="slidePreview"
+   @delete-document="deleteItem" 
+   :files="files"
+   :selectedFileContent="selectedFileContent">
+   </editor>
+   <modal v-show="deleteFile" @close-modal="exitModal">
+    <h5>Delete Document?</h5>
+    <p>Are you sure want to delete the <br>
+    {{ fileToDelete }} document and its Content?<br>
+    This action can not be reversed.
+  </p>
+   </modal>
 </template>
 
 <style>

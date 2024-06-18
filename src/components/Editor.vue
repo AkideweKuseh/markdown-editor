@@ -15,7 +15,9 @@
                         </div>
                     <div class="file-info">
                         <small>Document Name</small><br>
-                        <span><input type="text" value="untitled-document.md"></span>
+                        <span>
+                            <input type="text" id="file-name" value="untitled-document.md">
+                        </span>
                     </div>
                 </div>  
             </div>
@@ -68,6 +70,12 @@
 
     export default{
         name: 'Editor',
+        mounted(){
+            const fileName = document.getElementById('file-name') as HTMLInputElement;
+
+            this.markdown = this.files[1].content
+            fileName.value = this.files[1].name
+        },
         data(){
             return{
                 markdown: '',
@@ -77,7 +85,11 @@
             files: {
                 type: Array as PropType<File[]>,
                 required: true
-            }
+            },
+            selectedFileContent: {
+                type: String,
+                required: true
+            },
         },
         methods: {
             slideAction(){
@@ -114,6 +126,7 @@
         display: flex;
         flex-direction: column;
         min-height: 100vh;
+        background: var(--primaryColor);
     }
 
     .menu-btn, .close-btn {
@@ -156,6 +169,9 @@
         }
         .header{
             width: 98%;
+        }
+        .markdown-editor{
+            height: calc(93vh - 10px) !important;
         }
     }
 

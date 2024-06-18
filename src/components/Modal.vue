@@ -1,7 +1,7 @@
 <template>
-    <div class="popup">
+    <div class="popup" id="popup">
         <div class="popup-inner">
-            <span class="close">&#10005;</span>
+            <div class="close" @click="closeModal">&#10005;</div>
             <slot />
             <button>Confirm & Delete</button>
         </div>
@@ -11,11 +11,16 @@
 <script lang="ts">
     export default{
         name: 'Modal',
+        methods: {
+            closeModal(){
+                this.$emit('closeModal')
+            }
+        }
     }
 
 </script>
 
-<style>
+<style scoped>
     .popup{
         position: absolute;
         top: 0;
@@ -27,7 +32,7 @@
         align-items: center;
         justify-content: center;
         z-index: 2000;
-        background: rgba(0, 0, 0, 0.4);
+        background: rgba(45, 45, 45, 0.7);
     }
 
     .popup-inner{
@@ -36,6 +41,7 @@
         justify-content: center;
         padding: 20px;
         border-radius: 5px;
+        font-size: 14px;
         color: var(--textColor);
         background: var(--primaryColor);
     }
@@ -46,12 +52,12 @@
         margin-top: 1.5rem;
         background: var(--btnIdleColor);
         border: none;
-        color: var(--primaryColor);
+        color: #ffffff;
         cursor: pointer;
     }
 
     .close{
-        margin-right: 0;
         cursor: pointer;
+        margin-bottom: 10px;
     }
 </style>

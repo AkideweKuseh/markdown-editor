@@ -5,7 +5,7 @@
             <span>MY DOCUMENTS</span>
         </div>
         <div class="sidebar-content">
-            <button class="btn">+ New Document</button>
+            <button class="btn" @click="newFile">+ New Document</button>
             <ul class="documents">
                 <li v-for="file in files" :key="file.name" @click="fileSelect(file)">
                     <div class="document">
@@ -53,8 +53,11 @@
                 this.$emit('changeTheme')
             },
             fileSelect(file :File){
-                console.log(file)
+                //console.log(file)
                 this.$emit('fileSelected', file)
+            },
+            newFile(){
+                this.$emit('newFile')
             }
         }
     }
