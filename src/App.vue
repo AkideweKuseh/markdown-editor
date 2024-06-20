@@ -27,20 +27,20 @@ interface File {
       return{
         menuActive: false,
         files: data,
-        selectedFileContent: '',
+        selectedFileContent: 'x',
         deleteFile: false,
         fileToDelete: ''
       }
     },
     methods: {
       displayFile(file: File){
-        //this.selectedFileContent = file.content;
+        this.selectedFileContent = file.content;
 
-        const activeMarkdown = document.getElementById('markdown') as HTMLTextAreaElement;
+        // const activeMarkdown = document.getElementById('markdown') as HTMLTextAreaElement;
         const fileName = document.getElementById('file-name') as HTMLInputElement;
 
-        activeMarkdown.value = file.content;
-        activeMarkdown.focus()
+       // activeMarkdown.value = file.content;
+        //activeMarkdown.focus()
 
         fileName.value = file.name
       },
@@ -115,13 +115,13 @@ interface File {
         this.deleteFile = false;
       },
       createNewFile(){
-        const activeMarkdown = document.getElementById('markdown') as HTMLTextAreaElement;
+        //const activeMarkdown = document.getElementById('markdown') as HTMLTextAreaElement;
         const fileName = document.getElementById('file-name') as HTMLInputElement;
         const newFile: File = {...this.files[0]};
 
         this.files.unshift(newFile);
-        activeMarkdown.value = newFile.content;
-        activeMarkdown.focus();
+        this.selectedFileContent = newFile.content;
+        //activeMarkdown.focus();
         fileName.value = newFile.name;
       }
     }

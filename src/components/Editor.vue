@@ -91,6 +91,11 @@
                 required: true
             },
         },
+        watch: {
+            selectedFileContent(newValue, oldValue){
+                this.markdown = newValue
+            }
+        },
         methods: {
             slideAction(){
                 this.$emit('slideAction')
@@ -320,10 +325,14 @@
         outline: none;
         font-size: 14px;
         height: 100%;
-        overflow: hidden;
+        overflow: scroll;
         color: var(--textColor);
         background: var(--primaryColor);
     }
+
+    .markdown::-webkit-scrollbar {
+            display: none; /* WebKit browsers */
+        }
     
 
     .preview-box {
