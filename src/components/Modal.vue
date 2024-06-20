@@ -31,7 +31,7 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        z-index: 2000;
+        z-index: 20000;
         background: rgba(45, 45, 45, 0.7);
     }
 
@@ -39,6 +39,7 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
+        max-width: 280px;
         padding: 20px;
         border-radius: 5px;
         font-size: 14px;

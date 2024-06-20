@@ -34,10 +34,8 @@
     user-select: none;
 }
 .app{
-    display: flex;
     margin: 0;
     padding: 0;
-    background: var(--primaryColor);
 }
 
 body{

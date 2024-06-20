@@ -152,7 +152,7 @@
         justify-content: space-between;
         background: var(--headerBackgroundColor);
         padding: 20px 10px;
-        width: 100%;
+        width: auto;
         color: var(--primaryColor);
         font-family: sans-serif;
         overflow: hidden;
@@ -172,9 +172,9 @@
         .header .logo{
             display: none;
         }
-        .header{
+        /* .header{
             width: 98%;
-        }
+        } */
         .markdown-editor{
             height: calc(93vh - 10px) !important;
         }
@@ -210,9 +210,9 @@
             display: inline;
         }
 
-        .header{
+        /* .header{
             width: 96%;
-        }
+        } */
 
         .preview{
             width: auto !important;
@@ -297,7 +297,7 @@
     .markdown-editor {
         position: static;
         display: flex;
-        height: calc(88vh - 10px);
+        height: calc(90vh - 10px);
         color: var(--textColor);
         background: var(--primaryColor);
     }

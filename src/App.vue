@@ -11,7 +11,7 @@ interface File {
         content: string;
     }
 
-  let theme;
+
   // let getTheme = JSON.parse(localStorage.getItem('theme') || '{}');
   // console.log(getTheme)
 
@@ -29,7 +29,17 @@ interface File {
         files: data,
         selectedFileContent: 'x',
         deleteFile: false,
-        fileToDelete: ''
+        fileToDelete: '',
+        theme: ''
+      }
+    },
+    watch: {
+      theme(newValue, oldValue){
+        let getTheme = window.localStorage.theme 
+        if(getTheme){
+          console.log(getTheme)
+          console.log('new: '+newValue +' old: '+ oldValue)
+        }
       }
     },
     methods: {
@@ -94,14 +104,16 @@ interface File {
         // });
 
         // using localStorage to save theme state
+
+        //let theme;
  
         if(workSpace.classList.contains('dark-theme')){
-            theme = 'DARK';
+            this.theme = 'DARK';
         }else{
-            theme = 'LIGHT'
+            this.theme = 'LIGHT'
         }
 
-        localStorage.setItem('theme', JSON.stringify(theme));
+        localStorage.setItem('theme', JSON.stringify(this.theme));
 
       },
       deleteItem(){
