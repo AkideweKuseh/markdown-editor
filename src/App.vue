@@ -11,10 +11,6 @@ interface File {
         content: string;
     }
 
-
-  // let getTheme = JSON.parse(localStorage.getItem('theme') || '{}');
-  // console.log(getTheme)
-
   export default{
     name: 'App',
     components: {
@@ -22,6 +18,14 @@ interface File {
       Sidebar, 
       Editor,
       Toggler,
+    },
+    mounted(){
+      let getTheme = window.localStorage.theme 
+          if(JSON.parse(getTheme) === 'DARK'){
+              const checkBox = document.getElementById('toggle-switch') as HTMLInputElement;
+              checkBox.checked = true
+              this.switchTheme();
+          }
     },
     data(){
       return{
@@ -33,25 +37,16 @@ interface File {
         theme: ''
       }
     },
-    watch: {
-      theme(newValue, oldValue){
-        let getTheme = window.localStorage.theme 
-        if(getTheme){
-          console.log(getTheme)
-          console.log('new: '+newValue +' old: '+ oldValue)
-        }
-      }
-    },
+    // watch: {
+    //   theme(newValue, oldValue){
+        
+    //   }
+    // },
     methods: {
       displayFile(file: File){
         this.selectedFileContent = file.content;
 
-        // const activeMarkdown = document.getElementById('markdown') as HTMLTextAreaElement;
         const fileName = document.getElementById('file-name') as HTMLInputElement;
-
-       // activeMarkdown.value = file.content;
-        //activeMarkdown.focus()
-
         fileName.value = file.name
       },
       slideSidebar(){
@@ -78,7 +73,6 @@ interface File {
         preview.classList.toggle('resize-preview')
       },
       switchTheme(){
-        //const toggleSwitch = document.getElementById('toggle-switch')!;
         const sunIcon = document.getElementById('sun')!;
         const moonIcon = document.getElementById('moon')!;
         const workSpace = document.querySelector('.markdown-editor')!;
@@ -88,24 +82,6 @@ interface File {
         moonIcon.classList.toggle('active-theme');
         workSpace.classList.toggle('dark-theme');
         modal.classList.toggle('dark-theme');
-      
-        // toggleSwitch.addEventListener('change', (event) =>{
-        //     if((<HTMLInputElement>event.target).checked){
-        //         sunIcon.classList.remove('active-theme');
-        //         moonIcon.classList.add('active-theme');
-
-        //         workSpace.classList.add('dark-theme');
-        //     }else{
-        //         sunIcon.classList.add('active-theme');
-        //         moonIcon.classList.remove('active-theme');
-
-        //         workSpace.classList.remove('dark-theme');
-        //     }
-        // });
-
-        // using localStorage to save theme state
-
-        //let theme;
  
         if(workSpace.classList.contains('dark-theme')){
             this.theme = 'DARK';

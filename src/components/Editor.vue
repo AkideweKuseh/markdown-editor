@@ -248,7 +248,7 @@
         padding: 10px 16px;
         display: flex;
         align-items: center;
-        margin: 0 1rem;
+        margin: 0 0 0 1.5rem;
         border-radius: 5px;
         background: var(--btnIdleColor);
         border: none;
@@ -362,5 +362,10 @@
         color: var(--textColor);
         background: var(--primaryColor);
         transition: all 1s ease;
+        overflow-y: auto;
     }
+
+    .preview::-webkit-scrollbar {
+            display: none; /* WebKit browsers */
+        }
 </style>
