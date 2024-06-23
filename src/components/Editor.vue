@@ -26,7 +26,7 @@
                 <button class="btn-savemobile">
                     <img src="../assets/icon-save.svg"/>
                 </button>
-                <button class="btn-save">
+                <button class="btn-save" @click="saveFile">
                     <img class="save-icon" src="../assets/icon-save.svg"/>Save Changes
                 </button>
             </div>
@@ -105,6 +105,9 @@
             },
             deleteDocument(){
                 this.$emit('deleteDocument')
+            },
+            saveFile(){
+                this.$emit('save')
             }
         },
         computed:{

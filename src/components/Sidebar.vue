@@ -7,7 +7,7 @@
         <div class="sidebar-content">
             <button class="btn" @click="newFile">+ New Document</button>
             <ul class="documents">
-                <li v-for="file in files" :key="file.name" @click="fileSelect(file)">
+                <li v-for="(file, index) in files" :key="index" @click="fileSelect(file)">
                     <div class="document">
                         <div class="file-icon">
                             <img src="../assets/icon-document.svg" />

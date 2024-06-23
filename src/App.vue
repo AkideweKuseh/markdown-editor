@@ -11,6 +11,9 @@ interface File {
         content: string;
     }
 
+    const activeMarkdown = document.getElementById('markdown') as HTMLTextAreaElement;
+    const fileName = document.getElementById('file-name') as HTMLInputElement;
+
   export default{
     name: 'App',
     components: {
@@ -26,6 +29,11 @@ interface File {
               checkBox.checked = true
               this.switchTheme();
           }
+
+      let getSidebarStatus = window.localStorage.sidebarStatus
+          if(JSON.parse(getSidebarStatus) === 'ACTIVE'){
+            this.slideSidebar()
+          }
     },
     data(){
       return{
@@ -34,7 +42,12 @@ interface File {
         selectedFileContent: 'x',
         deleteFile: false,
         fileToDelete: '',
-        theme: ''
+        theme: '',
+        newFile:{
+          createdAt: '04-01-2022',
+          name: 'untitled-document.md',
+          content: ''
+        }
       }
     },
     // watch: {
@@ -44,20 +57,29 @@ interface File {
     // },
     methods: {
       displayFile(file: File){
-        this.selectedFileContent = file.content;
-
         const fileName = document.getElementById('file-name') as HTMLInputElement;
+
+        this.selectedFileContent = file.content;
         fileName.value = file.name
       },
       slideSidebar(){
-        const Sidebar = document.getElementById('sidebar')!;
+        const sidebar = document.getElementById('sidebar')!;
         const mainContent = document.getElementById('main-content')!;
         const header = document.getElementById('header')!;
 
 
-        Sidebar.classList.toggle('hidden');
+        sidebar.classList.toggle('hidden');
         mainContent.classList.toggle('slide');
-        header.classList.toggle('menu-active')
+        header.classList.toggle('menu-active');
+
+        let sidebarStatus ='';
+        if(sidebar.classList.contains('hidden')){
+            sidebarStatus = 'INACTIVE';
+        }else{
+            sidebarStatus = 'ACTIVE'
+        }
+
+        localStorage.setItem('sidebarStatus', JSON.stringify(sidebarStatus));
       },
       slidePreview(){
         const markdown = document.getElementById('text-container')!;
@@ -103,14 +125,24 @@ interface File {
         this.deleteFile = false;
       },
       createNewFile(){
-        //const activeMarkdown = document.getElementById('markdown') as HTMLTextAreaElement;
         const fileName = document.getElementById('file-name') as HTMLInputElement;
-        const newFile: File = {...this.files[0]};
+        const newFile: File = {...this.newFile};
 
-        this.files.unshift(newFile);
+        //this.files.unshift(newFile);
         this.selectedFileContent = newFile.content;
-        //activeMarkdown.focus();
+        
         fileName.value = newFile.name;
+      },
+      saveFile(){
+
+          const activeMarkdown = document.getElementById('markdown') as HTMLTextAreaElement;
+          const fileName = document.getElementById('file-name') as HTMLInputElement;
+
+          const fileToSave: File = {...this.newFile}
+
+          fileToSave.content = activeMarkdown.value
+          fileToSave.name = fileName.value
+          this.files.unshift(fileToSave)
       }
     }
   }
@@ -121,7 +153,8 @@ interface File {
    <editor 
    @slide-action="slideSidebar" 
    @slide-preview="slidePreview"
-   @delete-document="deleteItem" 
+   @delete-document="deleteItem"
+   @save="saveFile" 
    :files="files"
    :selectedFileContent="selectedFileContent">
    </editor>
