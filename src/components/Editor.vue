@@ -23,7 +23,7 @@
             </div>
             <div class="header-right">
                 <img class="delete-icon" src="../assets/icon-delete.svg" @click="deleteDocument"/>
-                <button class="btn-savemobile">
+                <button class="btn-savemobile" @click="saveFile">
                     <img src="../assets/icon-save.svg"/>
                 </button>
                 <button class="btn-save" @click="saveFile">
@@ -108,7 +108,7 @@
             },
             saveFile(){
                 this.$emit('save')
-            }
+            },
         },
         computed:{
             markdownToHtml(){
@@ -123,10 +123,14 @@
         display: flex;
         cursor: pointer;
     }
+    .inner-header .preview-toggle:hover{
+        filter: invert(50%) sepia(100%) saturate(400%) hue-rotate(-30deg);
+    }
 
     .inner-header .preview-mobile{
         display: none;
     }
+
     .main-content {
         flex: 1;
         margin-left: 0px;

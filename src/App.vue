@@ -34,6 +34,9 @@ interface File {
           if(JSON.parse(getSidebarStatus) === 'ACTIVE'){
             this.slideSidebar()
           }
+      let getFiles = JSON.parse(window.localStorage.Files);
+
+      this.files = getFiles;
     },
     data(){
       return{
@@ -51,7 +54,7 @@ interface File {
       }
     },
     // watch: {
-    //   theme(newValue, oldValue){
+    //   files(newValue, oldValue){
         
     //   }
     // },
@@ -143,6 +146,26 @@ interface File {
           fileToSave.content = activeMarkdown.value
           fileToSave.name = fileName.value
           this.files.unshift(fileToSave)
+
+          localStorage.setItem('Files', JSON.stringify(this.files));
+
+          prompt(`${fileName.value} Saved!`)
+      },
+      deleteFileNow(){
+        const activeMarkdown = document.getElementById('markdown') as HTMLTextAreaElement;
+        const fileName = document.getElementById('file-name') as HTMLInputElement;
+
+        for(let i = 0; i<this.files.length; i++){
+            if(this.files[i].name === this.fileToDelete){
+                this.files.splice(i, 1);
+                //console.log(this.files[i].name, ' Deteted')
+            }
+          }
+          localStorage.setItem('Files', JSON.stringify(this.files));
+          this.exitModal()
+          activeMarkdown.value = '';
+          fileName.value = ''
+          prompt(`${this.fileToDelete} Deleted!`)
       }
     }
   }
@@ -158,7 +181,7 @@ interface File {
    :files="files"
    :selectedFileContent="selectedFileContent">
    </editor>
-   <modal v-show="deleteFile" @close-modal="exitModal">
+   <modal v-show="deleteFile" @close-modal="exitModal" @delete-file="deleteFileNow">
     <h5>Delete Document?</h5>
     <p>Are you sure want to delete the <br>
     {{ fileToDelete }} document and its Content?<br>

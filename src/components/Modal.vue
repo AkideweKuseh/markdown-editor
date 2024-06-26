@@ -3,7 +3,7 @@
         <div class="popup-inner">
             <div class="close" @click="closeModal">&#10005;</div>
             <slot />
-            <button>Confirm & Delete</button>
+            <button @click="deleteFile">Confirm & Delete</button>
         </div>
     </div>
 </template>
@@ -14,6 +14,9 @@
         methods: {
             closeModal(){
                 this.$emit('closeModal')
+            },
+            deleteFile(){
+                this.$emit('deleteFile')
             }
         }
     }

@@ -107,6 +107,11 @@ code {
     font-family: 'Courier New', Courier, monospace;
 }
 
+table{
+    border: 1px solid var(--textColor);
+    padding: 0.2rem;
+}
+
 
 
 
