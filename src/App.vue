@@ -23,6 +23,7 @@ interface File {
       Toggler,
     },
     mounted(){
+      // Persist theme
       let getTheme = window.localStorage.theme 
           if(JSON.parse(getTheme) === 'DARK'){
               const checkBox = document.getElementById('toggle-switch') as HTMLInputElement;
@@ -30,6 +31,7 @@ interface File {
               this.switchTheme();
           }
 
+      //Persist Sidebar status
       let getSidebarStatus = window.localStorage.sidebarStatus
           if(JSON.parse(getSidebarStatus) === 'ACTIVE'){
             this.slideSidebar()
@@ -37,6 +39,15 @@ interface File {
       let getFiles = JSON.parse(window.localStorage.Files);
 
       this.files = getFiles;
+
+      // Persist active file
+      const fileName = document.getElementById('file-name') as HTMLInputElement;
+
+      let activeFileName = JSON.parse(window.localStorage.activeName)
+      let activeContent = JSON.parse(window.localStorage.activeContent)
+
+      fileName.value = activeFileName;
+      this.selectedFileContent = activeContent;
     },
     data(){
       return{
@@ -63,7 +74,10 @@ interface File {
         const fileName = document.getElementById('file-name') as HTMLInputElement;
 
         this.selectedFileContent = file.content;
-        fileName.value = file.name
+        fileName.value = file.name;
+
+        localStorage.setItem('activeContent', JSON.stringify(file.content));
+        localStorage.setItem('activeName', JSON.stringify(file.name));
       },
       slideSidebar(){
         const sidebar = document.getElementById('sidebar')!;
@@ -148,6 +162,8 @@ interface File {
           this.files.unshift(fileToSave)
 
           localStorage.setItem('Files', JSON.stringify(this.files));
+          localStorage.setItem('activeContent', JSON.stringify(fileToSave.content));
+          localStorage.setItem('activeName', JSON.stringify(fileToSave.name));
 
           prompt(`${fileName.value} Saved!`)
       },
