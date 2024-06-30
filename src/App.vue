@@ -61,7 +61,9 @@ interface File {
           createdAt: '04-01-2022',
           name: 'untitled-document.md',
           content: ''
-        }
+        },
+        fileAvailable: false,
+        availableFileIndex: 0
       }
     },
     // watch: {
@@ -150,21 +152,39 @@ interface File {
         
         fileName.value = newFile.name;
       },
+      checkFileAvailability(){
+        const fileName = document.getElementById('file-name') as HTMLInputElement;
+
+        for(let i = 0; i<this.files.length; i++){
+            if(this.files[i].name === fileName.value){
+                this.fileAvailable = true
+                this.availableFileIndex = i;
+            }
+          }
+          console.log(this.fileAvailable, this.availableFileIndex)
+          this.saveFile()
+      },
       saveFile(){
 
           const activeMarkdown = document.getElementById('markdown') as HTMLTextAreaElement;
           const fileName = document.getElementById('file-name') as HTMLInputElement;
-
+        if(this.fileAvailable){
+          this.files[this.availableFileIndex].content = activeMarkdown.value
+          //this.files[this.availableFileIndex].name = fileName.value
+          this.fileAvailable = false
+        }else{
           const fileToSave: File = {...this.newFile}
 
           fileToSave.content = activeMarkdown.value
           fileToSave.name = fileName.value
           this.files.unshift(fileToSave)
 
-          localStorage.setItem('Files', JSON.stringify(this.files));
           localStorage.setItem('activeContent', JSON.stringify(fileToSave.content));
           localStorage.setItem('activeName', JSON.stringify(fileToSave.name));
 
+        }
+
+          localStorage.setItem('Files', JSON.stringify(this.files));
           prompt(`${fileName.value} Saved!`)
       },
       deleteFileNow(){
@@ -193,7 +213,7 @@ interface File {
    @slide-action="slideSidebar" 
    @slide-preview="slidePreview"
    @delete-document="deleteItem"
-   @save="saveFile" 
+   @save="checkFileAvailability" 
    :files="files"
    :selectedFileContent="selectedFileContent">
    </editor>
