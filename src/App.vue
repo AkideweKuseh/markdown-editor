@@ -151,6 +151,7 @@ interface File {
         this.selectedFileContent = newFile.content;
         
         fileName.value = newFile.name;
+        this.slideSidebar()
       },
       checkFileAvailability(){
         const fileName = document.getElementById('file-name') as HTMLInputElement;
@@ -183,7 +184,7 @@ interface File {
           localStorage.setItem('activeName', JSON.stringify(fileToSave.name));
 
         }
-
+          this.slideSidebar();
           localStorage.setItem('Files', JSON.stringify(this.files));
           prompt(`${fileName.value} Saved!`)
       },
