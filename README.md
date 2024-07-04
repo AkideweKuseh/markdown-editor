@@ -14,9 +14,13 @@ An intuitive and user-friendly in-browser markdown editor that allows users to w
 - [Contact](#contact)
 
 ## Demo
-Check out the live demo [here](https://example.com/demo).
+Check out the live Site [here](https://markdowntest.netlify.app/).
 
+
+### Light Mode
 ![Demo Screenshot Light Theme](./src/assets/Screenshot-Light.png)
+
+### Dark Mode
 ![Demo Screenshot Dark Theme](./src/assets/Screenshot-Dark.png)
 
 ## Installation
