@@ -1,33 +1,75 @@
 # markdown-editor
 
-This template should help get you started developing with Vue 3 in Vite.
+# In-Browser Markdown Editor
 
-## Recommended IDE Setup
+## Description
+An intuitive and user-friendly in-browser markdown editor that allows users to write and preview markdown in real-time. Designed to enhance productivity and streamline the writing process.
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+## Table of Contents
+- [Demo](#demo)
+- [Installation](#installation)
+- [Features](#features)
+- [Development](#development)
+- [Technologies Used](#technologies-used)
+- [Contact](#contact)
 
-## Type Support for `.vue` Imports in TS
+## Demo
+Check out the live demo [here](https://example.com/demo).
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+![Demo Screenshot Light Theme](./src/assets/Screenshot-Light.png)
+![Demo Screenshot Dark Theme](./src/assets/Screenshot-Dark.png)
 
-## Customize configuration
+## Installation
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+### Prerequisites
+- Node.js >= v14.x
+- npm >= v6.x
 
-## Project Setup
+### Steps
+1. Clone the repository:
+    ```bash
+    git clone https://github.com/AkideweKuseh/markdown-editor.git
+    ```
+2. Navigate to the project directory:
+    ```bash
+    cd markdown-editor
+    ```
+3. Install dependencies:
+    ```bash
+    npm install
+    ```
+4. Run the project:
+    ```bash
+    npm run dev
+    ```
 
-```sh
-npm install
-```
+### Supported Markdown Syntax
+- Headers
+- Lists
+- Links
+- Images
+- Code blocks
+- Tables
+- blockquotes and more.
 
-### Compile and Hot-Reload for Development
+## Features
+- Real-time markdown preview
+- Dark mode support
+- User is able to CREAT, READ, UPDATE and DELETE Documents
+- The App is Desktop, Tablet and Mobile responsive.
 
-```sh
-npm run dev
-```
+## Development
+### Project Structure
+- `src/` - Source files
+- `public/` - Public assets
 
-### Type-Check, Compile and Minify for Production
+## Technologies Used
+- Vue.js
+- TypeScript
+- Marked Library
+- HTML/CSS
+- vite
 
-```sh
-npm run build
-```
+## Contact
+For any questions or suggestions, please contact [ce-makuseh1720@st.umat.gh](mailto:ce-makuseh1720@st.umat.gh).
+
